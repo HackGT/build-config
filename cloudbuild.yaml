@@ -13,6 +13,7 @@ steps:
   secretEnv: ['GH_TOKEN']
   env:
     - 'REPO_NAME=$REPO_NAME'
+    - 'BRANCH_NAME=$BRANCH_NAME'
 secrets:
 - kmsKeyName: projects/hackgt-cluster/locations/global/keyRings/hackgt-build/cryptoKeys/hackgt-build-key
   secretEnv:
