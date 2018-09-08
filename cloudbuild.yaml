@@ -8,6 +8,6 @@ steps:
 - name: 'gcr.io/cloud-builders/docker'
   args: ['push', 'hackgt/$REPO_NAME']
 secrets:
-- kmsKeyName: projects/[PROJECT-ID]/locations/global/keyRings/hackgt-build/cryptoKeys/hackgt-build-key
+- kmsKeyName: projects/hackgt-cluster/locations/global/keyRings/hackgt-build/cryptoKeys/hackgt-build-key
   secretEnv:
     PASSWORD: CiQATk4Dt7S6ki9JbJvw22WkKHsdyQhEOflZeK/1IJz/rJ18LmASNQD6KHO+IyjkNS/GHaDxJuLmbFXCr1kU5xzVVHaePe1CZeI1P1J/vyO3y1lXvSJpyID0hoXm
