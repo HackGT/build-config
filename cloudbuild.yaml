@@ -9,7 +9,7 @@ steps:
   args: ['push', 'hackgt/$REPO_NAME']
 - name: 'hackgt/builder-trigger-beehive-build'
   secretEnv: ['TRAVIS_TOKEN']
-- name: 'hackgt/pr-autodeploy'
+- name: 'hackgt/builder-pr-autodeploy'
   secretEnv: ['GH_TOKEN']
 secrets:
 - kmsKeyName: projects/hackgt-cluster/locations/global/keyRings/hackgt-build/cryptoKeys/hackgt-build-key
