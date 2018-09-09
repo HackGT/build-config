@@ -1,21 +1,27 @@
 steps:
 - name: 'gcr.io/cloud-builders/docker'
   args: ['build', '-t', 'hackgt/$REPO_NAME:$COMMIT_SHA', '-t', 'hackgt/$REPO_NAME:latest', '.']
+  timeout: 120s
 - name: 'gcr.io/cloud-builders/docker'
   entrypoint: 'bash'
   args: ['-c', 'docker login --username=hackgt --password=$$DOCKER_PASSWORD']
   secretEnv: ['DOCKER_PASSWORD']
+  timeout: 30s
 - name: 'gcr.io/cloud-builders/docker'
   args: ['push', 'hackgt/$REPO_NAME:$COMMIT_SHA']
+  timeout: 30s
 - name: 'gcr.io/cloud-builders/docker'
   args: ['push', 'hackgt/$REPO_NAME:latest']
+  timeout: 30s
 - name: 'hackgt/builder-trigger-beehive-build'
   secretEnv: ['TRAVIS_TOKEN']
+  timeout: 30s
 - name: 'hackgt/builder-pr-autodeploy'
   secretEnv: ['GH_TOKEN']
   env:
     - 'REPO_NAME=$REPO_NAME'
     - 'BRANCH_NAME=$BRANCH_NAME'
+  timeout: 30s
 secrets:
 - kmsKeyName: projects/hackgt-cluster/locations/global/keyRings/hackgt-build/cryptoKeys/hackgt-build-key
   secretEnv:
