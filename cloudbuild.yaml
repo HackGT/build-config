@@ -14,11 +14,6 @@ steps:
   secretEnv: ['TRAVIS_TOKEN']
   env:
     - 'REPO_NAME=$REPO_NAME'
-- name: 'hackgt/builder-pr-autodeploy'
-  secretEnv: ['GH_TOKEN']
-  env:
-    - 'REPO_NAME=$REPO_NAME'
-    - 'BRANCH_NAME=$BRANCH_NAME'
 timeout: 180s
 secrets:
 - kmsKeyName: projects/hackgt-cluster/locations/global/keyRings/hackgt-build/cryptoKeys/hackgt-build-key
